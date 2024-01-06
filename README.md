@@ -7,7 +7,12 @@ Este es un proyecto fullstack en el que se utiliza un sistema de autenticación 
 Exportar la base de datos mysql y revisar el archivo de configuración en caso de que se ocupen otros puertos o credenciales. El nombre de usuario quedó por defecto: 'root' y no tiene password.
 
 ```bash
-backend/db.s
+
+# importar dump sql a mysql
+blog.sql
+
+# configurar conexión a base de datos en caso de ser necesario
+backend/db.js
 ```
 
 ## Inicializar backend
