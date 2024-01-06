@@ -13,6 +13,7 @@ import Single from './pages/Single.jsx';
 import Write from './pages/Write.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+import { AuthContexProvider } from './context/authContext.jsx';
 
 const Layout = () => {
   return (
@@ -56,12 +57,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className="app">
-      <div className="container">
-        <RouterProvider router={router} />
+    <AuthContexProvider>
+      <div className="app">
+        <div className="container">
+          <RouterProvider router={router} />
+        </div>
       </div>
-    </div>
-
+    </AuthContexProvider>
   </React.StrictMode>,
 )
 

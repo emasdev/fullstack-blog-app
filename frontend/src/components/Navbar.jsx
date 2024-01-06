@@ -1,11 +1,11 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
 
 const Navbar = () => {
 
   const location = useLocation();
-
-  console.log(location)
+  const { currentUser, logout } = useContext(AuthContext);
 
   return (
     <nav className="navbar navbar-expand-md bg-body-tertiary">
@@ -19,12 +19,23 @@ const Navbar = () => {
             <li className="nav-item">
               <a className={`nav-link ${location.pathname === "/" ? 'active' : ''}`} href="/">Lista de entradas</a>
             </li>
-            <li className="nav-item">
-              <a className={`nav-link ${location.pathname === "/crear" ? 'active' : ''}`} href="/crear">Crear nueva entrada</a>
-            </li>
+            {currentUser?.user && (
+              <li className="nav-item">
+                <a className={`nav-link ${location.pathname === "/crear" ? 'active' : ''}`} href="/crear">Crear nueva entrada</a>
+              </li>
+            )}
+
           </ul>
-          <div className='d-flex'>
-            <button className='btn btn-light ml-md-4'>Cerrar sesión</button>
+          <div className='d-flex align-items-center'>
+            <span className='mr-3'>{currentUser?.user}</span>
+            {currentUser ? (
+              <button className='btn btn-light ml-md-4 text-muted' onClick={logout}>Cerrar sesión</button>
+
+            ) : (
+              <Link className="link" to="/login">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

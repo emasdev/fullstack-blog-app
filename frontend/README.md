@@ -1,4 +1,4 @@
-# React + Vite
+# Blog | frontend (react.js + vite) | backend (node.js + express)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

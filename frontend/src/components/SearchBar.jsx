@@ -14,7 +14,7 @@ const SearchBar = () => {
         <div className='col-sm-12 col-md-6'>
           <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
         </div>
-        <div className="col-sm-12 col-md-4">
+        <div className="col-sm-12 col-md-4 mt-3 mt-md-0">
           <div className="d-flex flex-column">
             <div className="form-check">
               <input className="form-check-input" type="radio" name="filterType" id="type1" value="Titulo" checked={filter === "Titulo"} onChange={onFilterChange} />
@@ -39,8 +39,8 @@ const SearchBar = () => {
 
       </div>
       <div className="row">
-        <div className="col-12 col-md-6">
-          <div className="d-flex justify-content-md-end">
+        <div className="col-12 col-md-6 mt-3 mt-md-0">
+          <div className="d-flex justify-content-center justify-content-md-end">
             <button className="btn btn-outline-primary" type="submit">Buscar</button>
           </div>
 
