@@ -104,7 +104,7 @@ const Home = () => {
                 <div className="card-body">
                   <Link className="link" to={`/post/${post.id}`}><h5 className='display-8'>{post.titulo}</h5></Link>
                   <h6 className="card-subtitle mb-2 text-body-secondary">{post.fecha}</h6>
-                  <p>{post.contenido}</p>
+                  <p>{post.contenido.length <= 70 ? post.contenido : post.contenido.substring(0, 70) + "..."}</p>
                   <hr />
                   <p className='text-end'><small>{post.autor}</small></p>
                   <div className="d-flex justify-content-end">

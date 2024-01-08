@@ -29,12 +29,19 @@ export const addPost = (req, res) => {
   jwt.verify(token, "secret", (err, userInfo) => {
     if (err) return res.status(403).json("¡Token no valido!");
 
-    const q =
+    const query =
       "INSERT INTO posts(`titulo`, `contenido`, `fecha`,`user_id`) VALUES (?)";
 
-    const values = [req.body.titulo, req.body.contenido, userInfo.id];
+    const values = [
+      req.body.titulo,
+      req.body.contenido,
+      req.body.fecha,
+      userInfo.id,
+    ];
 
-    db.query(q, [values], (err, data) => {
+    // console.log(values);
+
+    db.query(query, [values], (err, data) => {
       if (err) return res.status(500).json(err);
       return res.json("Se ha creado una entrada nueva.");
     });
