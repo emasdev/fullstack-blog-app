@@ -2,7 +2,37 @@ import { db } from "../db.js";
 import jwt from "jsonwebtoken";
 
 export const getPosts = (req, res) => {
-  const q = "SELECT * FROM posts";
+  const q =
+    "SELECT p.id, `user`, `titulo`, `contenido`, `fecha` FROM users u JOIN posts p ON u.id = p.user_id";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    return res.status(200).json(data);
+  });
+};
+
+export const search = (req, res) => {
+  // return res.status(200).json(req.body);
+  let q =
+    "SELECT p.id, `user`, `titulo`, `contenido`, `fecha` FROM users u JOIN posts p ON u.id = p.user_id";
+
+  switch (req.body.filter) {
+    case "Titulo":
+      q += " WHERE titulo LIKE '%" + req.body.search + "%';";
+      break;
+
+    case "Autor":
+      q += " WHERE user LIKE '%" + req.body.search + "%';";
+      break;
+
+    case "Contenido":
+      q += " WHERE contenido LIKE '%" + req.body.search + "%';";
+      break;
+
+    default:
+      break;
+  }
 
   db.query(q, (err, data) => {
     if (err) return res.status(500).send(err);

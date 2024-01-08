@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 import SearchBar from '../components/SearchBar'
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
+import moment from 'moment/min/moment-with-locales';
+moment.locale('es');
+
+
 
 
 
@@ -13,6 +17,7 @@ const Home = () => {
 
   const [posts, setPosts] = useState([]);
   const { currentUser } = useContext(AuthContext);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +69,7 @@ const Home = () => {
     <>
 
 
-      {posts.length > 0 && <SearchBar />}
+      {posts.length > 0 && <SearchBar handleFilter={setPosts} />}
       <div className='row'>
         {posts.length === 0 && (
           <div className="container">
@@ -103,12 +108,12 @@ const Home = () => {
               <div className="card">
                 <div className="card-body">
                   <Link className="link" to={`/post/${post.id}`}><h5 className='display-8'>{post.titulo}</h5></Link>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">{post.fecha}</h6>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">Creado {moment(post.date).fromNow()}</h6>
                   <p>{post.contenido.length <= 70 ? post.contenido : post.contenido.substring(0, 70) + "..."}</p>
                   <hr />
-                  <p className='text-end'><small>{post.autor}</small></p>
+                  <p className='text-end'><small>{post.user}</small></p>
                   <div className="d-flex justify-content-end">
-                    <a href="#" className="card-link text-end">Leer más</a>
+                    <Link className="card-link text-end" to={`/post/${post.id}`}>Leer más</Link>
                   </div>
 
                 </div>
