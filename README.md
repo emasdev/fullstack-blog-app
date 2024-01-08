@@ -38,3 +38,15 @@ npm i
 # iniciar servidor
 npm run start
 ```
+
+## Screenshots
+
+![Screen Shot 2024-01-08 at 12 45 31 AM](https://github.com/emasdev/fullstack-blog-app/assets/13182632/f813570b-01ab-477c-9bc0-7a02a097dfc7)
+
+![Screen Shot 2024-01-08 at 10 06 10 AM](https://github.com/emasdev/fullstack-blog-app/assets/13182632/193adea9-4a47-4a28-b8ad-cc4e005f3efb)
+
+![Screen Shot 2024-01-08 at 10 06 25 AM](https://github.com/emasdev/fullstack-blog-app/assets/13182632/51c00fbe-50a6-4aa4-8f08-74566e0cb9c7)
+
+![Screen Shot 2024-01-08 at 10 04 07 AM](https://github.com/emasdev/fullstack-blog-app/assets/13182632/85a7f62a-7838-4a4c-a4c8-ea478a3ed33d)
+
+![Screen Shot 2024-01-08 at 10 11 54 AM](https://github.com/emasdev/fullstack-blog-app/assets/13182632/8b88501c-fcfa-43ba-9812-37ead7c53ee0)
