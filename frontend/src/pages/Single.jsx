@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
+import axios from 'axios';
 
 const Single = () => {
 
-  const post = {
-    id: 1,
-    titulo: "Titulo",
-    autor: "Nombre de autor",
-    fecha: "04/06/2024",
-    contenido: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur exercitationem minima possimus in harum voluptatum cumque provident reprehenderit iure quis facere quae voluptatibus praesentium repudiandae non ea ex, quibusdam aperiam?"
-  }
+  // const post = {
+  //   id: 1,
+  //   titulo: "Titulo",
+  //   autor: "Nombre de autor",
+  //   fecha: "04/06/2024",
+  //   contenido: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur exercitationem minima possimus in harum voluptatum cumque provident reprehenderit iure quis facere quae voluptatibus praesentium repudiandae non ea ex, quibusdam aperiam?"
+  // }
+
+  const [post, setPost] = useState({});
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const postId = location.pathname.split("/")[2];
+
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/api/posts/${postId}`);
+        setPost(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [postId]);
 
   return (
     <div className="container">
